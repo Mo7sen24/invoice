@@ -4,54 +4,60 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>فاتورة</title>
+
 <link rel="stylesheet" href="style.css">
 
 <!-- PDF Libraries -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
 </head>
+
 <body>
 
 <div class="invoice" id="invoice">
 
-    <div class="header">
-        <img src="logo.jpeg" class="logo">
-        <h2>فاتورة</h2>
-    </div>
+<div class="header">
+<img src="" class="logo">
+<h2>فاتورة</h2>
+</div>
 
-    <div class="info">
-        <label>اسم العميل:</label>
-        <input type="text" id="customerName">
+<div class="info">
+<label>اسم العميل:</label>
+<input type="text" id="customerName">
 
-        <label>التاريخ:</label>
-        <input type="date" id="date">
-    </div>
+<label>التاريخ:</label>
+<input type="date" id="date">
+</div>
 
-    <table id="invoiceTable">
-        <thead>
-            <tr>
-                <th>م</th>
-                <th>البيان</th>
-                <th>الكمية</th>
-                <th>السعر</th>
-                <th>الإجمالي</th>
-            </tr>
-        </thead>
-        <tbody id="tableBody"></tbody>
-    </table>
+<table id="invoiceTable">
+<thead>
+<tr>
+<th>م</th>
+<th>البيان</th>
+<th>الكمية</th>
+<th>السعر</th>
+<th>الإجمالي</th>
+</tr>
+</thead>
 
-    <div class="total">
-        الإجمالي الكلي: <span id="grandTotal">0</span>
-    </div>
+<tbody id="tableBody"></tbody>
+
+</table>
+
+<div class="total">
+الإجمالي الكلي: <span id="grandTotal">0</span>
+</div>
 
 </div>
 
 <div class="buttons">
-    <button id="addRowBtn">Add Row</button>
-    <button id="downloadPDFBtn">تحميل PDF</button>
-    <button onclick="window.print()">طباعة</button>
+<button onclick="addRow()">Add Row</button>
+<button onclick="downloadPDF()">تحميل PDF</button>
+<button onclick="window.print()">طباعة</button>
 </div>
 
 <script src="script.js"></script>
+
 </body>
 </html>
