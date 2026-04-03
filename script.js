@@ -54,10 +54,10 @@ document.getElementById("grandTotal").textContent = grandTotal;
 for(let i = 1; i <= 20; i++){
 addRow();
 }
-
 function downloadPDF() {
-const { jsPDF } = window.jspdf;
 
+const { jsPDF } = window.jspdf;
+const invoice = document.getElementById("invoice");
 const rows = document.querySelectorAll("#tableBody tr");
 
 // نخفي الصفوف الفاضية
@@ -70,20 +70,28 @@ row.style.display = "none";
 }
 });
 
-html2canvas(document.getElementById("invoice")).then(canvas => {
+html2canvas(invoice, {
+scale: 2,  // مهم جدا للجودة
+useCORS: true
+}).then(canvas => {
+
 const imgData = canvas.toDataURL("image/png");
-const pdf = new jsPDF('p', 'mm', 'a4');
+const pdf = new jsPDF("p", "mm", "a4");
 
-const imgWidth = 210;
-const imgHeight = canvas.height * imgWidth / canvas.width;
+const pageWidth = 210;
+const pageHeight = 297;
 
-pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+const imgWidth = pageWidth;
+const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
 pdf.save("invoice.pdf");
 
-// نرجع الصفوف تاني
+// نرجع الصفوف
 rows.forEach(row => {
 row.style.display = "table-row";
 });
 
 });
+
 }
