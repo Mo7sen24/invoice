@@ -1,68 +1,89 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const products = ["لمبة LED","فيشة","سلك كهرباء","مفتاح","لوحة كهرباء"];
+const products = [
+"لمبة LED",
+"فيشة",
+"سلك كهرباء",
+"مفتاح",
+"لوحة كهرباء"
+];
 
-    function createRow(index) {
-        return `<tr>
-            <td>${index}</td>
-            <td><select>${products.map(p => `<option>${p}</option>`).join("")}</select></td>
-            <td><input type="number" class="qty" oninput="calculate()"></td>
-            <td><input type="number" class="price" oninput="calculate()"></td>
-            <td class="rowTotal">0</td>
-        </tr>`;
-    }
+function createRow(index) {
+return `
+<tr>
+<td>${index}</td>
 
-    function addRow() {
-        const tableBody = document.getElementById("tableBody");
-        const rowCount = tableBody.rows.length + 1;
-        tableBody.insertAdjacentHTML("beforeend", createRow(rowCount));
-    }
+<td>
+<select>
+${products.map(p => `<option>${p}</option>`).join("")}
+</select>
+</td>
 
-    function calculate() {
-        let grandTotal = 0;
-        document.querySelectorAll("#tableBody tr").forEach(row => {
-            const qty = parseFloat(row.querySelector(".qty").value) || 0;
-            const price = parseFloat(row.querySelector(".price").value) || 0;
-            const total = qty * price;
-            row.querySelector(".rowTotal").textContent = total.toFixed(2);
-            grandTotal += total;
-        });
-        document.getElementById("grandTotal").textContent = grandTotal.toFixed(2);
-    }
+<td>
+<input type="number" class="qty" oninput="calculate()">
+</td>
 
-    window.calculate = calculate;
+<td>
+<input type="number" class="price" oninput="calculate()">
+</td>
 
-    for(let i=1;i<=20;i++){ addRow(); }
-    document.getElementById("addRowBtn").addEventListener("click", addRow);
+<td class="rowTotal">0</td>
+</tr>
+`;
+}
 
-    document.getElementById("downloadPDFBtn").addEventListener("click", () => {
-        const invoice = document.getElementById("invoice");
-        const rows = invoice.querySelectorAll("#tableBody tr");
+function addRow() {
+const tableBody = document.getElementById("tableBody");
+const rowCount = tableBody.rows.length + 1;
+tableBody.insertAdjacentHTML("beforeend", createRow(rowCount));
+}
 
-        // اخفاء الصفوف الفارغة
-        rows.forEach(row => {
-            const qty = row.querySelector(".qty").value;
-            const price = row.querySelector(".price").value;
-            if(!qty && !price){ row.style.display = "none"; }
-        });
+function calculate() {
+let grandTotal = 0;
 
-        // استخدام html2canvas وتحويلها ل jsPDF
-        html2canvas(invoice, { scale: 2 }).then(canvas => {
-            const imgData = canvas.toDataURL("image/png");
-            const pdf = new jsPDF('p', 'mm', 'a4');
-            const pageWidth = pdf.internal.pageSize.getWidth();
-            const pageHeight = pdf.internal.pageSize.getHeight();
-            const imgProps = pdf.getImageProperties(imgData);
-            const pdfHeight = (imgProps.height * pageWidth) / imgProps.width;
+document.querySelectorAll("#tableBody tr").forEach(row => {
+const qty = row.querySelector(".qty").value || 0;
+const price = row.querySelector(".price").value || 0;
+const total = qty * price;
 
-            pdf.addImage(imgData, 'PNG', 0, 0, pageWidth, pdfHeight);
-            
-            // setTimeout يحل مشاكل تحميل PDF في بعض المتصفحات
-            setTimeout(() => {
-                pdf.save("invoice.pdf");
-            }, 100);
-
-            // إعادة الصفوف
-            rows.forEach(row => row.style.display = "table-row");
-        });
-    });
+row.querySelector(".rowTotal").textContent = total;
+grandTotal += total;
 });
+
+document.getElementById("grandTotal").textContent = grandTotal;
+}
+
+for(let i = 1; i <= 20; i++){
+addRow();
+}
+
+function downloadPDF() {
+const { jsPDF } = window.jspdf;
+
+const rows = document.querySelectorAll("#tableBody tr");
+
+// نخفي الصفوف الفاضية
+rows.forEach(row => {
+const qty = row.querySelector(".qty").value;
+const price = row.querySelector(".price").value;
+
+if(!qty && !price){
+row.style.display = "none";
+}
+});
+
+html2canvas(document.getElementById("invoice")).then(canvas => {
+const imgData = canvas.toDataURL("image/png");
+const pdf = new jsPDF('p', 'mm', 'a4');
+
+const imgWidth = 210;
+const imgHeight = canvas.height * imgWidth / canvas.width;
+
+pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+pdf.save("invoice.pdf");
+
+// نرجع الصفوف تاني
+rows.forEach(row => {
+row.style.display = "table-row";
+});
+
+});
+}
