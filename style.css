@@ -129,3 +129,6 @@ button {
         min-width: 80px; /* أو حسب الحاجة */
     }
 }
+#tableBody select {
+    min-width: 150px; /* أو حسب طول أسماء المنتجات */
+}
