@@ -51,6 +51,7 @@ body {
 table {
   width: 100%;
   border-collapse: collapse;
+  table-layout: auto; /* بدل fixed */
 }
 
 th, td {
@@ -131,59 +132,28 @@ button:nth-child(3){
   }
 
 }
+
 .pdf-only{
-display:none;
-font-weight:bold;
+  display:none;
+  font-weight:bold;
 }
 
 .pdf-mode #customerName,
 .pdf-mode #date{
-display:none;
+  display:none;
 }
 
 .pdf-mode .pdf-only{
-display:inline-block;
+  display:inline-block;
 }
 
-
-#invoiceTable {
-  table-layout: fixed;
-}
-
-#invoiceTable th:nth-child(1),
-#invoiceTable td:nth-child(1){
-  width: 6%;
-}
-
-#invoiceTable th:nth-child(2),
-#invoiceTable td:nth-child(2){
-  width: 34%;   /* البيان - أكبر عمود */
-}
-
-#invoiceTable th:nth-child(3),
-#invoiceTable td:nth-child(3){
-  width: 15%;
-}
-
-#invoiceTable th:nth-child(4),
-#invoiceTable td:nth-child(4){
-  width: 15%;
-}
-
-#invoiceTable th:nth-child(5),
-#invoiceTable td:nth-child(5){
-  width: 20%;
-}
-
-#invoiceTable th:nth-child(6),
-#invoiceTable td:nth-child(6){
-  width: 10%;
+.pdf-mode table th, 
+.pdf-mode table td {
+  font-size: 14px;
 }
 
 #invoiceTable td:nth-child(2){
   white-space: normal;
   word-break: break-word;
+  min-width: 120px;
 }
-
-
-
