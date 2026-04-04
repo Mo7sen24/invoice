@@ -17,44 +17,50 @@
 
 <div class="invoice" id="invoice">
 
-<div class="header">
-<img src="" class="logo">
-<h2>فاتورة</h2>
+  <div class="header">
+    <img src="" class="logo">
+    <h2>فاتورة</h2>
+  </div>
+
+  <div class="info">
+    <div>
+  <label>اسم العميل:</label>
+  <input type="text" id="customerName">
+  <span id="customerNameText" class="pdf-only"></span>
 </div>
-
-<div class="info">
-<label>اسم العميل:</label>
-<input type="text" id="customerName">
-
-<label>التاريخ:</label>
-<input type="date" id="date">
+    <div>
+  <label>التاريخ:</label>
+  <input type="date" id="date">
+  <span id="dateText" class="pdf-only"></span>
 </div>
+  </div>
 
-<table id="invoiceTable">
-<thead>
-<tr>
-<th>م</th>
-<th>البيان</th>
-<th>الكمية</th>
-<th>السعر</th>
-<th>الإجمالي</th>
-</tr>
-</thead>
+  <table id="invoiceTable">
+    <thead>
+      <tr>
+        <th>م</th>
+        <th>البيان</th>
+        <th>الكمية</th>
+        <th>السعر</th>
+        <th>الإجمالي</th>
+        <th>حذف</th>
+      </tr>
+    </thead>
 
-<tbody id="tableBody"></tbody>
+    <tbody id="tableBody"></tbody>
 
-</table>
+  </table>
 
-<div class="total">
-الإجمالي الكلي: <span id="grandTotal">0</span>
-</div>
+  <div class="total">
+    الإجمالي الكلي: <span id="grandTotal">0</span>
+  </div>
 
 </div>
 
 <div class="buttons">
-<button onclick="addRow()">Add Row</button>
-<button onclick="downloadPDF()">تحميل PDF</button>
-<button onclick="window.print()">طباعة</button>
+  <button onclick="addRow()">Add Row</button>
+  <button onclick="downloadPDF()">تحميل PDF</button>
+  <button onclick="window.print()">طباعة</button>
 </div>
 
 <script src="script.js"></script>
