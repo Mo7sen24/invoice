@@ -78,9 +78,9 @@ document.getElementById("grandTotal").textContent =
 grandTotal.toLocaleString('en-US');
 }
 
-for(let i=1;i<=20;i++){
+
 addRow();
-}
+
 
 function downloadPDF() {
 
