@@ -1,221 +1,146 @@
 * {
-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-font-family: "Cairo", Arial, sans-serif;
-direction: rtl;
-background: #f4f6f9;
-padding: 20px;
+  font-family: "Cairo", Arial, sans-serif;
+  direction: rtl;
+  background: #f4f6f9;
+  padding: 20px;
 }
 
 .invoice {
-background: white;
-padding: 25px;
-border-radius: 12px;
-box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-max-width: 900px;
-margin: auto;
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  max-width: 900px;
+  margin: auto;
 }
 
 .header {
-text-align: center;
-margin-bottom: 20px;
-border-bottom: 2px solid #eee;
-padding-bottom: 10px;
-}
-
-.header h2 {
-margin: 5px 0;
-color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
 }
 
 .logo {
-width: 120px;
-margin-bottom: 10px;
+  width: 120px;
 }
 
 .info {
-display: flex;
-gap: 15px;
-margin-bottom: 20px;
-align-items: center;
-flex-wrap: wrap;
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
 }
 
-.info label {
-font-weight: bold;
-color: #444;
+.info > div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .info input {
-padding: 8px;
-border: 1px solid #ddd;
-border-radius: 6px;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
 }
 
 table {
-width: 100%;
-border-collapse: collapse;
-margin-top: 10px;
+  width: 100%;
+  border-collapse: collapse;
 }
 
 th, td {
-border: 1px solid #ddd;
-padding: 10px;
-text-align: center;
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
 }
 
 th {
-background: #f0f3f7;
-font-weight: bold;
-}
-
-tbody tr:nth-child(even) {
-background: #fafafa;
+  background: #f0f3f7;
 }
 
 input, select {
-width: 100%;
-border: none;
-outline: none;
-text-align: center;
-background: transparent;
-}
-
-input:focus, select:focus {
-background: #f9fbff;
+  width: 100%;
+  border: none;
+  text-align: center;
 }
 
 .total {
-margin-top: 20px;
-font-size: 20px;
-font-weight: bold;
-text-align: left;
-color: #222;
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: left;
 }
 
 .buttons {
-margin-top: 20px;
-text-align: center;
+  margin-top: 20px;
+  text-align: center;
 }
 
 button {
-padding: 10px 18px;
-margin: 5px;
-border: none;
-border-radius: 8px;
-font-size: 14px;
-cursor: pointer;
-transition: 0.2s;
+  padding: 10px 18px;
+  margin: 5px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
 button:nth-child(1){
-background: #3498db;
-color: white;
+  background: #3498db;
+  color: white;
 }
 
 button:nth-child(2){
-background: #27ae60;
-color: white;
+  background: #27ae60;
+  color: white;
 }
 
 button:nth-child(3){
-background: #e67e22;
-color: white;
+  background: #e67e22;
+  color: white;
 }
 
-button:hover {
-transform: translateY(-1px);
-opacity: .9;
+.deleteBtn{
+  background:#e74c3c;
+  color:white;
+  padding:4px 8px;
+  border-radius:4px;
 }
 
-/* للطباعة فقط */
 @media print {
-
-body {
-background: white;
-padding: 0;
+  .buttons {
+    display: none;
+  }
 }
 
-.buttons {
-display: none;
-}
+/* موبايل */
+@media (max-width:768px){
 
-.invoice {
-box-shadow: none;
-border: none;
-}
+  .invoice{
+    width:100%;
+    padding:15px;
+  }
 
-}
-/* حجم ثابت للـ PDF */
-@media print, screen {
-
-.invoice {
-width: 794px;   /* عرض A4 */
-min-height: 1123px; /* طول A4 */
-margin: auto;
-}
+  th, td{
+    font-size:12px;
+    padding:5px;
+  }
 
 }
-/* تحسين الموبايل */
-@media (max-width: 768px) {
 
-body {
-padding: 10px;
+.pdf-only{
+display:none;
+font-weight:bold;
 }
 
-.invoice {
-padding: 15px;
+.pdf-mode input{
+display:none;
 }
 
-.header h2 {
-font-size: 20px;
-}
-
-.logo {
-width: 90px;
-}
-
-.info {
-flex-direction: column;
-align-items: stretch;
-gap: 8px;
-}
-
-.info label {
-font-size: 14px;
-}
-
-.info input {
-width: 100%;
-}
-
-/* الجدول يبقى scroll أفقي */
-table {
-display: block;
-overflow-x: auto;
-white-space: nowrap;
-}
-
-th, td {
-font-size: 13px;
-padding: 6px;
-}
-
-.total {
-font-size: 18px;
-text-align: right;
-}
-
-button {
-width: 100%;
-margin: 5px 0;
-}
-
-.buttons {
-display: flex;
-flex-direction: column;
-}
-
+.pdf-mode .pdf-only{
+display:inline-block;
 }
