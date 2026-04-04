@@ -61,7 +61,7 @@ th, td {
 }
 
 th {
-  background: #f0f3f7;
+  background: #76abf1;
 }
 
 input, select {
@@ -74,7 +74,7 @@ input, select {
   margin-top: 20px;
   font-size: 20px;
   font-weight: bold;
-  text-align: left;
+  text-align: right;
 }
 
 .buttons {
@@ -162,3 +162,55 @@ button:nth-child(3){
 .pdf-mode td:nth-child(6){
   display: none; /* يخفي عمود الحذف في PDF فقط */
 }
+
+
+.header .logo {
+  width: 150px; /* حجم ثابت مناسب */
+  display: block;
+  margin: 0 auto 10px auto; /* فوق خالص ووسط الصفحة */
+}
+
+
+/* لوجو نصي */
+.brand-logo {
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.brand-name {
+  font-size: 28px;       /* حجم اللوجو */
+  font-weight: bold;
+  color: #e67e22;        /* لون يشبه الدهانات أو البراند */
+  font-family: 'Cairo', Arial, sans-serif; /* خط واضح */
+  letter-spacing: 2px;   /* مسافة بين الحروف */
+}
+
+/* كلمة فاتورة تبقى تحت اللوجو */
+.header h2 {
+  text-align: center;
+  margin-top: 0;
+  font-size: 24px;
+  color: #333;
+}
+
+.brand-logo {
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.brand-name {
+  font-size: 32px;              /* أكبر حجم شوي */
+  font-weight: 900;             /* عريض جداً */
+  color: #2287e6;               /* لون دافئ مناسب للدهانات */
+  font-family: 'Cairo', Arial, sans-serif;
+  letter-spacing: 3px;          /* مسافة بين الحروف */
+  
+  /* تأثيرات فخمة */
+  text-transform: uppercase;    /* يحول الحروف للكابيتال */
+  text-shadow: 
+     1px 1px 0 #fff,          /* حدود بيضاء خفيفة */
+     2px 2px 5px rgba(0,0,0,0.2), /* ظل خفيف */
+     0 0 10px rgba(0, 0, 0, 0.5); /* توهج بسيط */
+}
+
+
