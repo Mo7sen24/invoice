@@ -131,13 +131,13 @@ button:nth-child(3){
   }
 
 }
-
 .pdf-only{
 display:none;
 font-weight:bold;
 }
 
-.pdf-mode input{
+.pdf-mode #customerName,
+.pdf-mode #date{
 display:none;
 }
 
