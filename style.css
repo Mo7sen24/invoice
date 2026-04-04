@@ -144,3 +144,46 @@ display:none;
 .pdf-mode .pdf-only{
 display:inline-block;
 }
+
+
+#invoiceTable {
+  table-layout: fixed;
+}
+
+#invoiceTable th:nth-child(1),
+#invoiceTable td:nth-child(1){
+  width: 6%;
+}
+
+#invoiceTable th:nth-child(2),
+#invoiceTable td:nth-child(2){
+  width: 34%;   /* البيان - أكبر عمود */
+}
+
+#invoiceTable th:nth-child(3),
+#invoiceTable td:nth-child(3){
+  width: 15%;
+}
+
+#invoiceTable th:nth-child(4),
+#invoiceTable td:nth-child(4){
+  width: 15%;
+}
+
+#invoiceTable th:nth-child(5),
+#invoiceTable td:nth-child(5){
+  width: 20%;
+}
+
+#invoiceTable th:nth-child(6),
+#invoiceTable td:nth-child(6){
+  width: 10%;
+}
+
+#invoiceTable td:nth-child(2){
+  white-space: normal;
+  word-break: break-word;
+}
+
+
+
