@@ -92,6 +92,11 @@ const nameInput = document.getElementById("customerName");
 const nameText = document.getElementById("customerNameText");
 nameText.textContent = nameInput.value;
 
+// تحويل التاريخ لنص
+const dateInput = document.getElementById("date");
+const dateText = document.getElementById("dateText");
+dateText.textContent = dateInput.value;
+
 // نخلي الصفحة في وضع PDF
 invoice.classList.add("pdf-mode");
 
@@ -106,11 +111,8 @@ if(!qty && !price){
 row.style.display = "none";
 }
 });
-const dateInput = document.getElementById("date");
-const dateText = document.getElementById("dateText");
-dateText.textContent = dateInput.value;
 
-html2canvas(invoice, { scale:2 }).then(canvas => {
+html2canvas(invoice, { scale: 3 }).then(canvas => {
 
 const imgData = canvas.toDataURL("image/png");
 const pdf = new jsPDF('p','mm','a4');
