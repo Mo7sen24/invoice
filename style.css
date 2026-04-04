@@ -157,3 +157,8 @@ button:nth-child(3){
   word-break: break-word;
   min-width: 120px;
 }
+
+.pdf-mode th:nth-child(6),
+.pdf-mode td:nth-child(6){
+  display: none; /* يخفي عمود الحذف في PDF فقط */
+}
